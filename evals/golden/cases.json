@@ -1,0 +1,502 @@
+[
+  {
+    "id": "core-001",
+    "description": "LudoPix, a Madrid mobile gaming studio, wants to license an engagement SDK that embeds imperceptible visual flicker patterns and sub-audible audio cues during gameplay, tuned by an ML model to lift in-app purchase conversion without players ever noticing the stimuli. A/B tests show a 12% revenue uplift, and the monetisation team wants it in the next release.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(a)"],
+    "split": "core",
+    "rationale": "This deploys subliminal techniques beyond a person's consciousness to materially distort purchasing behaviour in a way reasonably likely to cause significant (financial) harm — squarely the Article 5(1)(a) practice."
+  },
+  {
+    "id": "core-002",
+    "description": "A Bonn-based telecom subsidiary runs voice analytics on inbound support calls to detect signs of confusion or cognitive decline in elderly callers in real time. When the model flags a caller as disoriented, the agent's screen switches to a script optimised to close premium contract upgrades before the call ends.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(b)"],
+    "split": "core",
+    "rationale": "The system exploits vulnerabilities of specific persons due to their age in order to materially distort their behaviour, causing them significant financial harm — the Article 5(1)(b) practice."
+  },
+  {
+    "id": "core-003",
+    "description": "A mid-sized Spanish municipality is piloting a 'good neighbour index' that scores residents by combining recycling compliance, noise complaints, school-attendance records of their children, and tax punctuality. High scorers get priority in queues for municipal services; low scorers lose access to subsidised housing waitlists and public nursery places.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(c)"],
+    "split": "core",
+    "rationale": "This is social scoring based on social behaviour leading to detrimental treatment in social contexts unrelated to the contexts in which the data was generated (housing and childcare access vs recycling/noise data), and the treatment is disproportionate — the Article 5(1)(c) practice."
+  },
+  {
+    "id": "core-004",
+    "description": "A regional police force has commissioned a model that flags named individuals likely to commit burglary in the next twelve months, built from personality questionnaires administered at prior stops, social-network ties, and neighbourhood characteristics. There is no requirement that a flagged person be linked to any specific investigation or evidence; flagged individuals enter an enhanced-monitoring list.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(d)"],
+    "split": "core",
+    "rationale": "This is a risk assessment predicting the commission of criminal offences based solely on profiling and personality-trait assessment, with no grounding in objective, verifiable facts directly linked to criminal activity — the Article 5(1)(d) practice; the carve-out for supporting fact-based human assessment does not apply."
+  },
+  {
+    "id": "core-005",
+    "description": "A Lyon security startup crawls public social networks and openly accessible webcam and CCTV streams to harvest face images at scale, building a searchable face-matching database (currently 2.8 billion faces) that it sells to corporate security teams and private investigators across Europe.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(e)"],
+    "split": "core",
+    "rationale": "Creating or expanding facial recognition databases through untargeted scraping of facial images from the internet or CCTV footage is the Article 5(1)(e) practice, regardless of who the customers are."
+  },
+  {
+    "id": "core-006",
+    "description": "A Zaragoza logistics operator wants to install cameras above warehouse pack stations that read workers' facial expressions throughout the shift and produce a daily 'morale and engagement' score per worker, surfaced in line managers' dashboards to inform team talks and shift assignments. There is no safety function — it is purely a people-management analytics product.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(f)"],
+    "split": "core",
+    "rationale": "Inferring emotions of natural persons in the workplace from facial expressions is the Article 5(1)(f) practice; the medical/safety exception does not apply because the stated purpose is people-management analytics."
+  },
+  {
+    "id": "core-007",
+    "description": "An ad-tech firm offers retailers a camera analytics suite that classifies shoppers in-store by inferred religious affiliation (from headwear and facial analysis) and likely sexual orientation, so digital signage can serve 'culturally tuned' advertising in real time.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(g)"],
+    "split": "core",
+    "rationale": "This is a biometric categorisation system that deduces or infers religious beliefs and sexual orientation from biometric data — the Article 5(1)(g) practice; neither the lawful-dataset-labelling nor the law-enforcement carve-out applies."
+  },
+  {
+    "id": "core-008",
+    "description": "A city police department plans to procure vehicle-mounted live facial recognition units that scan festival and stadium crowds in real time against a broad watchlist of wanted persons and 'persons of interest'. There is no judicial authorisation process attached; the goal is general deterrence and routine identification at large public events.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(h)"],
+    "split": "core",
+    "rationale": "Real-time remote biometric identification in publicly accessible spaces for law enforcement is the Article 5(1)(h) practice; none of the narrow exceptions (targeted search for victims, imminent terrorist threat, suspects of listed serious crimes, each with prior authorisation) is engaged by generalised watchlist scanning."
+  },
+  {
+    "id": "core-009",
+    "description": "The operator of a Sevilla football stadium wants to run face matching over entry-gate CCTV recordings in the days after each match, identifying supporters who are subject to stadium bans so the club can issue sanctions and refuse future ticket sales. Matching is done retrospectively against a database of banned individuals.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 1(a)"],
+    "split": "core",
+    "rationale": "Retrospective identification of individuals at a distance from CCTV is a remote biometric identification system under Annex III point 1(a) (it is identification, not verification of a claimed identity); it is not Article 5(1)(h) because it is neither real-time-for-law-enforcement nor run by police."
+  },
+  {
+    "id": "core-010",
+    "description": "A regional electricity distribution operator is deploying a reinforcement-learning controller that balances load across substations and autonomously triggers protective shutoffs to prevent overloads and cascading failures. It will act as the protective layer of the grid's operational control system.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 2"],
+    "split": "core",
+    "rationale": "This is an AI system used as a safety component in the management and operation of the supply of electricity — Annex III point 2 verbatim."
+  },
+  {
+    "id": "core-011",
+    "description": "A French grande école receives forty thousand applications a year and wants an ML model that scores and ranks applicants using grades, essays, and extracurriculars; only the top-ranked band is invited to interview. Admissions staff see the ranked list, not the full pool.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 3(a)", "Article 6(3)"],
+    "split": "core",
+    "rationale": "This determines access or admission to an educational institution — Annex III point 3(a). It profiles natural persons (evaluating personal aspects to rank them), so the Article 6(3) derogations are unavailable."
+  },
+  {
+    "id": "core-012",
+    "description": "A Berlin job platform decides which registered candidates are shown which vacancy advertisements, using a model that predicts fit and application likelihood per person. Candidates never see jobs the model scores them low on.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 4(a)", "Article 6(3)"],
+    "split": "core",
+    "rationale": "Annex III point 4(a) expressly covers AI used for recruitment, 'in particular to place targeted job advertisements'; per-candidate fit prediction is profiling, so Article 6(3) derogations cannot apply."
+  },
+  {
+    "id": "core-013",
+    "description": "A courier platform operating in Spain and Italy allocates delivery shifts and zones using per-rider performance scores built from delivery speed, acceptance rate, and customer ratings. Riders with low scores see fewer and worse shift offers in the app.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 4(b)", "Article 6(3)"],
+    "split": "core",
+    "rationale": "The system makes decisions affecting work-related relationships (task allocation) and monitors and evaluates performance and behaviour of platform workers — Annex III point 4(b); rider scoring is profiling, blocking any Article 6(3) escape."
+  },
+  {
+    "id": "core-014",
+    "description": "A regional government wants to automate first-pass eligibility checks for its housing-benefit scheme: the system reads each application and recommends grant, deny, or investigate, and caseworkers process the queue in that order. Roughly 200,000 households apply each year.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 5(a)", "Article 6(3)"],
+    "split": "core",
+    "rationale": "Evaluating eligibility of natural persons for essential public assistance benefits, including granting, reducing or revoking them, is Annex III point 5(a); the per-applicant recommendation evaluates personal circumstances and materially steers outcomes, so no derogation applies."
+  },
+  {
+    "id": "core-015",
+    "description": "A Spanish neobank uses a gradient-boosting model to produce a credit score for each consumer loan applicant from transaction history, income signals, and bureau data. The score decides automatic approval, rejection, or referral, and sets the offered interest rate.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 5(b)", "Article 6(3)"],
+    "split": "core",
+    "rationale": "Evaluating creditworthiness or establishing the credit score of natural persons is Annex III point 5(b); the fraud-detection exception does not apply, and credit scoring is profiling, so Article 6(3) is unavailable."
+  },
+  {
+    "id": "core-016",
+    "description": "A German health insurer prices individual private health policies with an ML model over health questionnaires, claims history, and opted-in wearables data, setting each applicant's premium and exclusions.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 5(c)", "Article 6(3)"],
+    "split": "core",
+    "rationale": "Risk assessment and pricing in relation to natural persons for health insurance is Annex III point 5(c) verbatim; individual risk pricing is profiling, so the derogations do not apply."
+  },
+  {
+    "id": "core-017",
+    "description": "A regional 112 emergency call centre wants AI that listens to incoming calls, classifies severity, and recommends dispatch priority and resource type (ambulance vs first responder), with dispatchers able to override. The pitch is cutting median dispatch decision time by 40 seconds.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 5(d)"],
+    "split": "core",
+    "rationale": "Evaluating and classifying emergency calls and establishing priority in the dispatching of emergency first-response services is Annex III point 5(d) verbatim; dispatcher override does not remove it from the listed use case."
+  },
+  {
+    "id": "core-018",
+    "description": "A national probation service is procuring a tool that estimates reoffending risk for individuals up for parole, using verified criminal history, age at first offence, and supervision-compliance records. Probation officers use the score as one input in their parole recommendations.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 6(d)", "Article 6(3)"],
+    "split": "core",
+    "rationale": "Assessing the risk of a natural person offending or re-offending on behalf of law enforcement authorities is Annex III point 6(d). It escapes the Article 5(1)(d) ban because it supports a human assessment based on objective and verifiable facts directly linked to criminal activity, but it remains high-risk, and as profiling it cannot use the Article 6(3) derogations."
+  },
+  {
+    "id": "core-019",
+    "description": "A consular service wants to triage visa applications: the system reads submitted documents, travel history, and financial evidence, and recommends approve, refuse, or manual review for each applicant. Officers clear the recommended-approve queue in bulk.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 7(c)", "Article 6(3)"],
+    "split": "core",
+    "rationale": "Assisting competent public authorities in the examination of applications for visas, including assessments of the reliability of evidence, is Annex III point 7(c); per-applicant recommendations that drive bulk clearing are neither narrow-procedural nor merely preparatory."
+  },
+  {
+    "id": "core-020",
+    "description": "A justice ministry is piloting an assistant for sitting judges that ingests the case file, retrieves applicable precedent, analyses the facts against the legal tests, and drafts proposed findings of fact and law for the judge to edit.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 8(a)"],
+    "split": "core",
+    "rationale": "Assisting a judicial authority in researching and interpreting facts and the law and in applying the law to a concrete set of facts is Annex III point 8(a) verbatim; drafting proposed findings goes well beyond a narrow procedural task."
+  },
+  {
+    "id": "core-021",
+    "description": "A Munich machinery OEM embeds a vision AI module in its robotic welding cells that detects humans entering the work envelope and triggers the emergency stop. The module is sold as the cell's protective system and goes through notified-body certification with the machine.",
+    "expected_tier": "high_risk",
+    "basis": ["Article 6(1)"],
+    "split": "core",
+    "rationale": "The AI is a safety component of a product covered by Annex I Union harmonisation legislation (machinery) that undergoes third-party conformity assessment — both Article 6(1) conditions are met, so it is high-risk regardless of Annex III."
+  },
+  {
+    "id": "core-022",
+    "description": "A Valencian fashion e-tailer is adding a conversational shopping assistant to its public storefront, built on a licensed large language model, to answer sizing, stock, and returns questions in chat. It will handle roughly 60% of inbound customer contacts.",
+    "expected_tier": "limited",
+    "basis": ["Article 50(1)"],
+    "split": "core",
+    "rationale": "An AI system intended to interact directly with natural persons must be designed so users know they are talking to AI — Article 50(1) transparency; no Annex III use case is engaged. The underlying GPAI model carries its own provider obligations, which do not change the use-case tier."
+  },
+  {
+    "id": "core-023",
+    "description": "A Lyon dental clinic chain wants an outbound voice agent that phones patients to confirm, cancel, or reschedule appointments. The synthetic voice is deliberately natural-sounding, and most patients currently assume it is a human receptionist.",
+    "expected_tier": "limited",
+    "basis": ["Article 50(1)"],
+    "split": "core",
+    "rationale": "A voice agent interacting directly with natural persons where the AI nature is not obvious triggers the Article 50(1) disclosure duty; appointment scheduling is administrative and engages no Annex III area."
+  },
+  {
+    "id": "core-024",
+    "description": "A Hamburg SaaS company sells a tool that turns text scripts into photorealistic presenter videos for corporate training — the presenters are entirely synthetic but indistinguishable from filmed humans. Customers export finished MP4s for their learning platforms.",
+    "expected_tier": "limited",
+    "basis": ["Article 50(2)"],
+    "split": "core",
+    "rationale": "As a provider of an AI system generating synthetic video content, the company must ensure outputs are marked in a machine-readable format and detectable as artificially generated — Article 50(2); no higher tier applies."
+  },
+  {
+    "id": "core-025",
+    "description": "An audiobook platform clones the voices of narrators (with contract and consent) so it can produce audiobooks at ten times the speed of studio recording. The cloned audio is sold to listeners through normal retail channels.",
+    "expected_tier": "limited",
+    "basis": ["Article 50(2)", "Article 50(4)"],
+    "split": "core",
+    "rationale": "Generated synthetic audio must be marked machine-readably as artificially generated (Article 50(2)), and audio content resembling a real person's voice requires deployer disclosure under Article 50(4); consent governs the rights question, not the transparency duty."
+  },
+  {
+    "id": "core-026",
+    "description": "A Barcelona science museum is building an exhibit in which a lifelike video of a deceased Catalan scientist, generated from archival footage and recordings, 'speaks' to visitors about her discoveries. The film runs on a loop in the main hall.",
+    "expected_tier": "limited",
+    "basis": ["Article 50(4)"],
+    "split": "core",
+    "rationale": "The exhibit is artificially generated video resembling a real person — a deepfake — so the deployer must disclose the artificial generation under Article 50(4); for artistic/creative works the disclosure may be made in a way that does not hamper enjoyment, but it is still required."
+  },
+  {
+    "id": "core-027",
+    "description": "A financial news portal auto-publishes AI-written daily market summaries — indices, movers, macro headlines — straight to its public website with no human editor in the loop. The pieces read like staff-written copy.",
+    "expected_tier": "limited",
+    "basis": ["Article 50(4)"],
+    "split": "core",
+    "rationale": "AI-generated text published to inform the public on matters of public interest must be disclosed as artificially generated unless it has undergone human review and a person holds editorial responsibility — Article 50(4); with no editor in the loop, the disclosure duty stands."
+  },
+  {
+    "id": "core-028",
+    "description": "The procurement team at a Madrid construction group wants AI that screens incoming supplier invoices for anomalies — duplicate billing, price outliers versus contract terms, unusual payment-detail changes — and flags suspect invoices for accounts-payable review.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 5(b)"],
+    "split": "core",
+    "rationale": "Despite the financial flavour, this evaluates B2B invoices, not the creditworthiness or access to essential services of natural persons, so Annex III point 5(b) is not engaged and no other listed use case fits — minimal."
+  },
+  {
+    "id": "core-029",
+    "description": "A retail bank runs a real-time model that scores card transactions for fraud and blocks or challenges suspicious payments before they clear. False positives inconvenience genuine customers a few times a year.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 5(b)"],
+    "split": "core",
+    "rationale": "Annex III point 5(b) expressly excepts AI systems used for the purpose of detecting financial fraud from the creditworthiness use case, so this is out of the listed areas — minimal."
+  },
+  {
+    "id": "core-030",
+    "description": "A neobank's app verifies users at onboarding and login with a one-to-one face match against the photo in their submitted identity document. No matching against any wider database happens — it only confirms you are the person you claim to be.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 1(a)"],
+    "split": "core",
+    "rationale": "Annex III point 1(a) expressly excludes biometric verification whose sole purpose is to confirm that a person is who they claim to be; one-to-one verification is therefore outside the listed biometrics use case — minimal."
+  },
+  {
+    "id": "core-031",
+    "description": "A motor insurer prices car insurance per driver using telematics — braking harshness, speeding, night driving — collected from an opt-in app, adjusting premiums monthly based on driving behaviour.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 5(c)"],
+    "split": "core",
+    "rationale": "Annex III point 5(c) covers risk assessment and pricing for natural persons only in the case of life and health insurance; motor insurance pricing is outside the listed use case, and no other area applies — minimal (GDPR profiling rules still apply, but that is not this Act's tiering)."
+  },
+  {
+    "id": "core-032",
+    "description": "A facilities-management company predicts elevator component failures across its building portfolio from vibration and door-cycle sensor data, scheduling technicians before breakdowns. The lifts' certified safety systems are entirely separate.",
+    "expected_tier": "minimal",
+    "basis": ["Article 6(1)", "Annex III point 2"],
+    "split": "core",
+    "rationale": "Maintenance-scheduling analytics do not perform a safety function, so the system is not a safety component of the lift under Article 6(1), and building elevators are not the supply of water, gas, heating or electricity or critical digital infrastructure under Annex III point 2 — minimal."
+  },
+  {
+    "id": "core-033",
+    "description": "A Spanish grocery chain forecasts store-level demand per SKU to drive replenishment orders and markdown timing, cutting fresh-food waste by double digits. The model sees sales, weather, and promotions data only.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 5(a)"],
+    "split": "core",
+    "rationale": "Inventory and demand forecasting affects stock, not any natural person's access to services, employment, or benefits; the nearest-sounding area (essential services, Annex III point 5) concerns eligibility decisions about persons — minimal."
+  },
+  {
+    "id": "core-034",
+    "description": "A logistics group optimises warehouse slotting and pick-path routing for its autonomous mobile robots and human pickers, recomputing routes hourly from order flow. The robots' collision-avoidance safety system is a separate certified component from another vendor.",
+    "expected_tier": "minimal",
+    "basis": ["Article 6(1)"],
+    "split": "core",
+    "rationale": "Route and slotting optimisation performs no safety function — the certified collision-avoidance system does — so the Article 6(1) safety-component route is not engaged, and no Annex III area covers warehouse operations — minimal."
+  },
+  {
+    "id": "core-035",
+    "description": "A Frankfurt insurer's platform engineering team rolls out an AI coding assistant (autocomplete, test generation, code review suggestions) to its 400 internal developers, hosted in their own tenant.",
+    "expected_tier": "minimal",
+    "basis": ["Article 50(1)"],
+    "split": "core",
+    "rationale": "A developer tool assisting professionals with code is not a listed use case and the Article 50(1) duty is satisfied trivially in a tool explicitly sold and labelled as an AI assistant; obligations for the underlying general-purpose model sit with its provider — minimal."
+  },
+  {
+    "id": "core-036",
+    "description": "An IT team deploys an ML-based filter that classifies inbound corporate email as spam, phishing, or legitimate, quarantining the first two categories. Misclassified mail can be released from quarantine by users.",
+    "expected_tier": "minimal",
+    "basis": ["Article 5(1)(a)"],
+    "split": "core",
+    "rationale": "Spam and phishing filtering is the canonical minimal-risk example: it manipulates no one, decides nothing about persons' access to services or work, and matches no listed use case — minimal."
+  },
+  {
+    "id": "core-037",
+    "description": "A marketing team at a French cosmetics group personalises email campaigns with a model that predicts which product categories and send times maximise each subscriber's purchase probability, building per-customer propensity profiles from browsing and purchase history.",
+    "expected_tier": "minimal",
+    "basis": ["Article 5(1)(a)", "Annex III point 5"],
+    "split": "core",
+    "rationale": "Ordinary commercial personalisation does not use subliminal or purposefully manipulative techniques causing significant harm (Article 5(1)(a) threshold), and consumer marketing is not an Annex III area, so profiling alone does not raise the tier — minimal."
+  },
+  {
+    "id": "core-038",
+    "description": "A construction-tech vendor compares weekly 360-degree site photos against the BIM model and schedule to report progress deviation per zone to the project director. Output is a percent-complete dashboard and a list of zones behind plan.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 2"],
+    "split": "core",
+    "rationale": "Progress documentation makes no decision about persons and performs no safety function on infrastructure; construction-site monitoring of work-in-place matches no listed use case — minimal."
+  },
+  {
+    "id": "core-039",
+    "description": "A German industrial group optimises energy consumption inside its plants — compressed air, HVAC setpoints, furnace scheduling — with an ML controller that shifts load to cheaper hours. It buys from the grid; it does not operate any part of it.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 2"],
+    "split": "core",
+    "rationale": "Annex III point 2 covers safety components in the supply of water, gas, heating or electricity; demand-side optimisation inside a private factory neither supplies energy nor acts as a safety component — minimal."
+  },
+  {
+    "id": "core-040",
+    "description": "A brand-intelligence SaaS scores the sentiment of public product reviews and social posts about its clients' brands, producing trend dashboards. It processes text only — no images, audio, or video of the authors.",
+    "expected_tier": "minimal",
+    "basis": ["Article 3(39)", "Annex III point 1(c)"],
+    "split": "core",
+    "rationale": "Emotion recognition under the Act (Article 3(39)) requires inferring emotions from biometric data; text sentiment analysis uses no biometric data, so neither Annex III point 1(c) nor Article 50(3) is engaged — minimal."
+  },
+  {
+    "id": "contested-001",
+    "description": "A Toulouse HR-tech vendor sells a CV parser that converts uploaded résumés into structured fields — employment dates, degrees, certifications, skills keywords — for any applicant-tracking system. It produces no scores, no rankings, and no filtering; recruiters still see every candidate in the original order.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 4(a)", "Article 6(3)(a)", "Article 6(3)(d)"],
+    "split": "contested",
+    "rationale": "Reading one: it is 'used for the recruitment of natural persons', so Annex III point 4(a) applies. Reading two: pure field extraction is a narrow procedural task and a preparatory task to a human assessment, evaluating no personal aspects, so the Article 6(3)(a)/(d) derogation removes it from high-risk. The second wins because no profiling occurs and the output changes only format, not candidate visibility or order.",
+    "rubric_note": "R2 — narrow procedural / preparatory escape applies because the system produces no person-level score, flag, or ordering; R1 is not triggered (no profiling)."
+  },
+  {
+    "id": "contested-002",
+    "description": "A Berlin vendor in the same ATS market goes further: its model scores and orders applicants by predicted job fit, and customer data shows recruiters review only the top decile of the ranked list in 80% of hiring rounds. The vendor argues a human always makes the final call.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 4(a)", "Article 6(3)"],
+    "split": "contested",
+    "rationale": "Reading one: human-in-the-loop plus 'preparatory' framing supports an Article 6(3)(d) escape. Reading two: ranking candidates by predicted fit is profiling of natural persons inside the Annex III point 4(a) use case ('to filter job applications, to evaluate candidates'), and Article 6(3) states profiling systems are always high-risk. The second wins — the derogation is textually unavailable, and the top-decile behaviour shows the ranking materially determines outcomes.",
+    "rubric_note": "R1 — profiling within an Annex III area defeats all Article 6(3) derogations."
+  },
+  {
+    "id": "contested-003",
+    "description": "A Spanish long-haul fleet is fitting cab cameras that track eyelid closure and head nodding and sound an in-cab alarm when the driver shows drowsiness. Nothing is stored or transmitted; no score or footage ever reaches dispatchers or managers, and the system exists to prevent fatigue crashes.",
+    "expected_tier": "minimal",
+    "basis": ["Article 3(39)", "Article 5(1)(f)", "Annex III point 1(c)", "Annex III point 4(b)"],
+    "split": "contested",
+    "rationale": "Reading one: biometric monitoring of employees in the workplace points at the workplace emotion-inference ban or at employee-monitoring high risk. Reading two: fatigue is a physical state, not an emotion or intention, so the system is not emotion recognition under Article 3(39) (Recital 18 names driver-fatigue detection expressly), the Article 5(1)(f) safety exception would cover it anyway, and with no data reaching managers it is not used to evaluate workers under Annex III point 4(b). The second wins on the definition alone — minimal.",
+    "rubric_note": "R5 — physical-state detection (fatigue, pain) is outside the Act's definition of emotion recognition; R11 safety exception is a backstop."
+  },
+  {
+    "id": "contested-004",
+    "description": "A Paris CX-analytics vendor scores support calls in real time: caller frustration on one axis, and the agent's stress and empathy on the other, both inferred from voice. Customer scores tune call routing; agent scores feed monthly coaching reviews with team leads.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(f)", "Annex III point 1(c)", "Article 50(3)"],
+    "split": "contested",
+    "rationale": "Reading one: this is customer-experience analytics, at most an emotion-recognition system requiring transparency (Article 50(3)) and high-risk treatment (Annex III point 1(c)). Reading two: inferring agents' emotions from their voices at work, used in coaching reviews, is emotion inference in the workplace with no medical or safety purpose — the Article 5(1)(f) practice. The second wins for the agent-facing component, and the strictest applicable rule sets the tier for the system as marketed.",
+    "rubric_note": "R3 — when one marketed function falls under a stricter tier, the system takes the stricter tier; the agent-scoring function is the Article 5(1)(f) practice."
+  },
+  {
+    "id": "contested-005",
+    "description": "A Madrid utility rolls out 'PoliBot', an assistant on the staff intranet that answers employees' HR-policy questions — leave, expenses, payroll dates. It is badged 'AI Assistant' in the interface, and every employee got onboarding comms explaining it is an AI tool. Only employees can access it.",
+    "expected_tier": "minimal",
+    "basis": ["Article 50(1)"],
+    "split": "contested",
+    "rationale": "Reading one: it is an AI system interacting directly with natural persons, so Article 50(1) puts it at limited. Reading two: Article 50(1) does not apply where the AI nature is obvious to a reasonably well-informed person — explicit AI badging plus onboarding comms in a closed employee context satisfies or moots the duty, leaving no operative obligation. The second wins for triage purposes: the disclosure is structurally built in, so the system sits at minimal.",
+    "rubric_note": "R4 — internal-facing chatbots with explicit AI labelling and informed users fall to minimal because the Article 50(1) duty is already discharged by context and design."
+  },
+  {
+    "id": "contested-006",
+    "description": "A Munich AI lab has trained its own large general-purpose language model and launches it to consumers behind a chat application, with image generation included. The model is also offered via API to business customers for arbitrary downstream uses.",
+    "expected_tier": "limited",
+    "basis": ["Article 50(1)", "Article 50(2)"],
+    "split": "contested",
+    "rationale": "Reading one: a frontier general-purpose model 'must be' in a heavier tier given systemic-risk debate. Reading two: GPAI obligations (Articles 51-56) are a provider-level overlay, not a use-case tier; the use case evaluated here is a consumer chat application, which triggers Article 50(1) disclosure and Article 50(2) output marking — limited. The second wins: the Act tiers uses, and model-level duties attach separately to the lab as GPAI provider.",
+    "rubric_note": "R8 — GPAI is an overlay, never a tier; classify the deployed use case and note Articles 51-56 in the rationale."
+  },
+  {
+    "id": "contested-007",
+    "description": "A French retail bank gives credit officers an LLM tool that assembles a structured summary of each loan applicant's file — income documents, account statements, registry extracts — with citations to source pages. It computes no score and makes no recommendation; officers do the entire assessment themselves.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 5(b)", "Article 6(3)(d)"],
+    "split": "contested",
+    "rationale": "Reading one: anything touching consumer credit files at a bank sits in the creditworthiness use case (Annex III point 5(b)). Reading two: document summarisation with citations evaluates nothing about the person — it is a preparatory task to the human assessment under Article 6(3)(d), and no profiling occurs. The second wins as described, though the bank must document the derogation assessment and the line is crossed the moment the tool starts characterising applicant risk.",
+    "rubric_note": "R2 — preparatory information-organisation without person-level evaluation escapes via Article 6(3)(d); flips to high_risk under R1 if outputs characterise or rank the applicant."
+  },
+  {
+    "id": "contested-008",
+    "description": "A Catalan startup sells a general-purpose document OCR and field-extraction API, marketed for invoices, forms, and archives. One university customer wires the API into its in-house admissions-ranking platform to digitise application forms before its own model scores them.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 3(a)", "Article 6(3)(a)"],
+    "split": "contested",
+    "rationale": "Reading one: the OCR output feeds admission decisions, so the vendor is inside the education use case (Annex III point 3(a)). Reading two: classification follows the intended purpose of the system as placed on the market — a generic OCR API is not 'intended to be used' to determine admission, and it performs a narrow procedural task; the university's integrated ranking platform is the high-risk system, with the university bearing provider duties for it. The second wins for the OCR product evaluated here.",
+    "rubric_note": "R9 — component vs product: generic components do not inherit the integrating deployer's tier; the integrated system is classified as a whole."
+  },
+  {
+    "id": "contested-009",
+    "description": "A Stuttgart component maker sells a vision module for elevator doors that detects people and objects in the doorway and forces the doors to reopen. Lift OEMs integrate it as the door-protection device, and it is covered by the lift's notified-body certification. The vendor describes it as 'a smart sensor upgrade'.",
+    "expected_tier": "high_risk",
+    "basis": ["Article 6(1)"],
+    "split": "contested",
+    "rationale": "Reading one: it is a sensor accessory, far from any sensitive decision about people. Reading two: it performs a safety function (preventing crushing) in a product covered by Annex I harmonisation legislation (lifts) undergoing third-party conformity assessment — both Article 6(1) conditions are met. The second wins: the safety-component test is functional, not about how mundane the part sounds.",
+    "rubric_note": "R10 — the Article 6(1) route turns on whether the AI performs a safety function in an Annex I product with third-party conformity assessment; marketing language is irrelevant."
+  },
+  {
+    "id": "contested-010",
+    "description": "A Barcelona healthtech startup ships a consumer app where users chat about symptoms and get general self-care information plus 'consider seeing a GP' nudges. The terms state it provides health information, not diagnosis, and it refuses to name conditions or recommend treatments.",
+    "expected_tier": "limited",
+    "basis": ["Article 50(1)", "Article 6(1)"],
+    "split": "contested",
+    "rationale": "Reading one: symptom triage is in substance a medical-device function, which would route to high-risk via Article 6(1) once medical-device rules require notified-body assessment. Reading two: with an intended purpose limited to general health information and no diagnostic output, it does not meet the conditions that trigger third-party conformity assessment, leaving the conversational interface's Article 50(1) disclosure duty — limited. The second wins on the facts as described, but the label flips if the app starts naming likely conditions.",
+    "rubric_note": "R10 — the Article 6(1) route requires the product actually to be subject to third-party conformity assessment under Annex I legislation; intended purpose as stated and enforced decides."
+  },
+  {
+    "id": "contested-011",
+    "description": "A German university licenses a detector that flags student essay submissions as likely AI-written. A flag automatically opens an academic-misconduct review; students whose work is flagged face grade suspension during proceedings, and the tool's score is shown to the misconduct panel.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 3(d)", "Article 6(3)"],
+    "split": "contested",
+    "rationale": "Reading one: the tool only flags for human review, a preparatory task under Article 6(3)(d). Reading two: it monitors and detects forbidden conduct of students within assessments (Annex III point 3(d)), and its score directly triggers proceedings and interim grade consequences — it materially influences the assessment of individual students rather than preparing it. The second wins: the consequence-bearing per-student flag is not a narrow procedural task.",
+    "rubric_note": "R2 (converse) — a per-person flag that automatically triggers consequences is not narrow-procedural or preparatory; the derogation fails."
+  },
+  {
+    "id": "contested-012",
+    "description": "An Iberian electricity retailer ranks households in arrears by an ML-predicted likelihood of eventually paying, and uses the ranking to prioritise disconnection orders and decide who is offered a payment plan instead. The data science team calls it 'collections optimisation'.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 5(b)", "Article 6(3)"],
+    "split": "contested",
+    "rationale": "Reading one: this is internal collections operations, not credit scoring — minimal. Reading two: predicting a named person's likelihood of meeting payment obligations and gating their access to electricity on it is creditworthiness evaluation in substance under Annex III point 5(b), and it profiles natural persons, blocking any derogation. The second wins: the listed use case is matched by function, not by what the team names it.",
+    "rubric_note": "R6 — substance over label: a system matching a listed use case's function takes that classification regardless of internal naming; R1 blocks the derogation."
+  },
+  {
+    "id": "contested-013",
+    "description": "A French grocery chain scores loyalty-programme members on shopping frequency, basket composition, and app engagement. High scorers get better coupons and early access to promotions; low scorers simply get fewer perks. The score touches nothing outside the loyalty programme — not pricing, not service access, not credit.",
+    "expected_tier": "minimal",
+    "basis": ["Article 5(1)(c)"],
+    "split": "contested",
+    "rationale": "Reading one: scoring people on behaviour is social scoring. Reading two: the Article 5(1)(c) practice requires detrimental or unfavourable treatment either in social contexts unrelated to where the data was generated, or that is unjustified or disproportionate; differentiated perks confined to the same commercial relationship meet neither limb. The second wins — this is ordinary loyalty segmentation, minimal.",
+    "rubric_note": "R7 — social-scoring requires the cross-context or disproportionality limb; in-programme perk differentiation satisfies neither."
+  },
+  {
+    "id": "contested-014",
+    "description": "A proptech startup sells landlords a 'rent-risk' score per applicant that aggregates social media activity, gig-platform ratings, utility payment history, and lifestyle signals scraped from public profiles. Applicants below the threshold are auto-declined across all member landlords, whatever the individual landlord thinks.",
+    "expected_tier": "prohibited",
+    "basis": ["Article 5(1)(c)"],
+    "split": "contested",
+    "rationale": "Reading one: this is just credit-style tenant screening — at worst high-risk creditworthiness territory. Reading two: it scores people on social behaviour and personal characteristics from contexts unrelated to a tenancy (social media, gig ratings, lifestyle signals) and produces detrimental treatment (network-wide housing denial) that is detached from the data's original context and disproportionate — the Article 5(1)(c) practice, which applies to private actors. The second wins because the score's inputs are dominated by unrelated social behaviour rather than financial data.",
+    "rubric_note": "R7 — cross-context social-behaviour scoring with detrimental treatment trips the ban; had inputs been limited to payment history, this would instead be high_risk under Annex III point 5(b)."
+  },
+  {
+    "id": "contested-015",
+    "description": "A national police analytics unit forecasts burglary risk per 200-metre grid cell per shift from historical incident data, seasonality, and weather, and patrol routes are adjusted accordingly. The system outputs map heat only — it never names, lists, or scores any individual.",
+    "expected_tier": "minimal",
+    "basis": ["Article 5(1)(d)", "Annex III point 6(e)"],
+    "split": "contested",
+    "rationale": "Reading one: predictive policing belongs in the law-enforcement risk tiers, full stop. Reading two: the Article 5(1)(d) practice targets predictions about identified natural persons based on profiling, and every law-enforcement entry in Annex III point 6 concerns assessments or profiling of natural persons — place-based forecasting matches none of them. The second wins on the text: the Act tiers listed use cases, not sectors, though proxy effects on patrolled communities are a real policy critique.",
+    "rubric_note": "R6 — sector does not inflate the tier; no listed use case covers area-level forecasting with no person-level output."
+  },
+  {
+    "id": "contested-016",
+    "description": "A European airline group deploys AI at check-in and boarding that examines passports and visas for forged security features and inconsistent machine-readable zones, fulfilling the carrier's document-check obligations toward border authorities. It assesses documents, not people; flagged documents go to a human supervisor.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 7(d)"],
+    "split": "contested",
+    "rationale": "Reading one: this is migration/border work done on behalf of public authorities, so it belongs in the border-control area. Reading two: Annex III point 7(d) covers detecting, recognising or identifying natural persons but expressly excepts verification of the authenticity of travel documents — which is exactly and only what this does. The exception wins on its plain text — minimal.",
+    "rubric_note": "R6 — explicit textual exclusions are taken at face value; document-authenticity verification is carved out of point 7(d)."
+  },
+  {
+    "id": "contested-017",
+    "description": "A political consultancy offers parties a tool that segments undecided voters from canvassing and consumer data, generates per-segment persuasion messages on the issues each segment cares about, and decides which voters receive which arguments across channels in the final campaign weeks.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 8(b)"],
+    "split": "contested",
+    "rationale": "Reading one: this is ordinary campaign ad optimisation, and campaign-organisation tools are excluded. Reading two: Annex III point 8(b) covers systems intended to influence the outcome of an election or the voting behaviour of natural persons, excluding only tools organising campaigns from an administrative or logistical point of view — per-voter persuasion targeting is the influencing function itself, not logistics. The second wins; the exclusion cannot swallow the rule it qualifies.",
+    "rubric_note": "R6 — the logistics exclusion in point 8(b) covers routing, scheduling and admin, not message targeting designed to change voting behaviour."
+  },
+  {
+    "id": "contested-018",
+    "description": "A Cologne SaaS transcribes workplace meetings and publishes per-employee 'engagement and contribution' scores to manager dashboards, derived from talk-time share, interruption counts, and language patterns in the transcripts. HR wants to use the scores in quarterly performance conversations.",
+    "expected_tier": "high_risk",
+    "basis": ["Annex III point 4(b)", "Article 6(3)", "Article 3(39)"],
+    "split": "contested",
+    "rationale": "Reading one: it is productivity analytics over meeting metadata — minimal. Reading two: it monitors and evaluates the performance and behaviour of persons in a work relationship (Annex III point 4(b)) and feeds performance reviews; per-employee scoring is profiling, so no Article 6(3) derogation. The second wins. Because scores derive from transcript text rather than voice acoustics, it is not biometric emotion inference under Article 3(39) — a vocal-tone variant would risk the workplace emotion-recognition ban instead.",
+    "rubric_note": "R1 — employee profiling inside point 4(b) defeats the derogations; R5 explains why this lands at high_risk rather than the workplace emotion-inference ban."
+  },
+  {
+    "id": "contested-019",
+    "description": "A justice ministry uses an AI tool to redact names, addresses, and other personal identifiers from court judgments before public publication. Clerks spot-check a sample of redactions each week; the tool makes no other changes to the text.",
+    "expected_tier": "minimal",
+    "basis": ["Annex III point 8(a)", "Article 6(3)(a)"],
+    "split": "contested",
+    "rationale": "Reading one: it operates on judicial documents inside the administration of justice, so Annex III point 8(a) applies. Reading two: point 8(a) covers assisting judicial authorities in researching and interpreting facts and law — redaction interprets nothing and influences no judicial decision; it is a narrow procedural task under Article 6(3)(a) with no profiling. The second wins — minimal.",
+    "rubric_note": "R2 — pure-text procedural transformation (redaction, formatting, translation) with no influence on any judicial assessment escapes via Article 6(3)(a)."
+  },
+  {
+    "id": "contested-020",
+    "description": "A Heidelberg lab-tech vendor sells ML software that interprets blood-panel results from laboratory analysers and classifies samples as likely positive for early-stage blood cancers, prompting confirmatory testing. It is sold to clinical laboratories and is going through notified-body review under the EU's in-vitro diagnostics rules as Class C software.",
+    "expected_tier": "high_risk",
+    "basis": ["Article 6(1)"],
+    "split": "contested",
+    "rationale": "Reading one: it is back-office lab software and a physician always orders the confirmatory test, so it should escape as a preparatory tool. Reading two: it is itself a product (in-vitro diagnostic software) covered by Annex I harmonisation legislation and undergoing third-party conformity assessment, satisfying both Article 6(1) conditions — and the Article 6(3) derogations apply only to Annex III systems, not to the Article 6(1) route. The second wins.",
+    "rubric_note": "R10 — Article 6(1) classification is mechanical once the Annex I product requires notified-body assessment; the narrow-procedural derogations cannot be invoked against it."
+  }
+]

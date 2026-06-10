@@ -1,0 +1,12 @@
+{
+ "generatedAt": "2026-06-10T21:30:34.376Z",
+ "corpusVersion": "aia-oj-2024-06-13_ingested-2026-06-10",
+ "configs": [
+  {
+   "name": "bm25-only",
+   "queries": 60,
+   "recallAt5": 0.25,
+   "mrr": 0.1538888888888889
+  }
+ ]
+}
