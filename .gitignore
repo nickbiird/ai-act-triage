@@ -1,0 +1,19 @@
+# deps / build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# env & secrets — only .env.example ships
+.env
+.env.*
+!.env.example
+
+# local artifacts
+.DS_Store
+*.log
+.vercel
+
+# eval scratch (committed artifacts live in evals/results/, scratch does not)
+evals/.scratch/
