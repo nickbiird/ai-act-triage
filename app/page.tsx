@@ -277,7 +277,7 @@ function TraceDetail({ node, data }: { node: string; data: unknown }) {
         <TierBadge tier={String(d.tier)} /> {String(d.reasoning ?? '').slice(0, 180)}…
       </p>
     );
-  if (node === 'critique' && d.verdict)
+  if (node === 'critic' && d.verdict)
     return (
       <p className="text-xs text-stone-500">
         {String(d.verdict) === 'sustain' ? 'Classification survived refutation.' : `Objection: ${String(d.objection ?? '').slice(0, 160)}`}

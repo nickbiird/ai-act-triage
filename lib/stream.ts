@@ -81,7 +81,7 @@ function summarize(node: string, v: Record<string, unknown> | null): unknown {
     }
     case 'propose':
       return v.proposal;
-    case 'critique':
+    case 'critic':
       return v.critique;
     case 'gate':
       return v.decision;

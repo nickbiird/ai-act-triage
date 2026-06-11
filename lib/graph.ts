@@ -1,7 +1,7 @@
 /**
  * The assessment graph.
  *
- *   guard -> plan_queries -> retrieve -> propose -> critique -+-> gate -> report
+ *   guard -> plan_queries -> retrieve -> propose -> critic -+-> gate -> report_node
  *                                ^                            |
  *                                +------- (one revision) -----+
  *
@@ -172,7 +172,7 @@ Rules:
   return { proposal: value, usage: [usage], ...(state.critique ? { revisionCount: 1 } : {}) };
 }
 
-async function critique(state: S): Promise<Partial<S>> {
+async function critic(state: S): Promise<Partial<S>> {
   const { value, usage } = await structuredCall({
     model: 'deep',
     node: 'critique',
@@ -209,7 +209,7 @@ async function gate(state: S, config?: RunnableConfig): Promise<Partial<S>> {
   };
 }
 
-async function report(state: S): Promise<Partial<S>> {
+async function reportNode(state: S): Promise<Partial<S>> {
   const proposal = state.proposal!;
   const finalTier: Tier = state.decision?.tierOverride ?? proposal.tier;
   const rejected = state.decision ? !state.decision.approved && !state.decision.tierOverride : false;
@@ -254,9 +254,9 @@ export function buildGraph() {
     .addNode('plan_queries', planQueries)
     .addNode('retrieve', retrieveNode)
     .addNode('propose', propose)
-    .addNode('critique', critique)
+    .addNode('critic', critic)
     .addNode('gate', gate)
-    .addNode('report', report)
+    .addNode('report_node', reportNode)
     .addEdge(START, 'guard')
     .addConditionalEdges('guard', (s: S) => (s.guardFail ? END : 'plan_queries'), {
       [END]: END,
@@ -264,12 +264,12 @@ export function buildGraph() {
     })
     .addEdge('plan_queries', 'retrieve')
     .addEdge('retrieve', 'propose')
-    .addEdge('propose', 'critique')
+    .addEdge('propose', 'critic')
     .addConditionalEdges(
-      'critique',
+      'critic',
       (s: S) => (s.critique?.verdict === 'object' && s.revisionCount === 0 ? 'propose' : 'gate'),
       { propose: 'propose', gate: 'gate' },
     )
-    .addEdge('gate', 'report')
-    .addEdge('report', END);
+    .addEdge('gate', 'report_node')
+    .addEdge('report_node', END);
 }
