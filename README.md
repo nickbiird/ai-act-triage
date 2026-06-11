@@ -18,7 +18,7 @@ The expensive question is not "is this legal?". It is **"which of these forty us
 flowchart LR
     A["Use-case<br/>description"] --> B["PII mask +<br/>input gate"]
     B --> C["Query<br/>planning"]
-    C --> D["Hybrid retrieval over the Act<br/>BM25 + dense, RRF,<br/>parent expansion"]
+    C --> D["Dense retrieval over the Act<br/>cosine + parent expansion<br/>(BM25 fallback; hybrid measured)"]
     D --> E["Proposer<br/>classifies tier,<br/>cites provisions"]
     E --> F["Critic<br/>tries to refute<br/>from the same text"]
     F -->|objection, once| E
@@ -27,7 +27,7 @@ flowchart LR
 ```
 
 1. Personal data in the description is masked before any model call; an input gate rejects instruction payloads.
-2. Retrieval queries are planned in the Act's own vocabulary, then run against the full statute text: BM25 and dense embeddings fused with Reciprocal Rank Fusion, expanded to whole articles.
+2. Retrieval queries are planned in the Act's own vocabulary, then run against the full statute text by dense (static Gemini embedding) cosine, expanded to whole articles. The retrieval scorecard measures dense, BM25, and RRF-fused hybrid head-to-head; dense wins on this corpus, so it is the default, with BM25-only as the zero-key fallback and hybrid retained as a selectable, measured config (see [TRUST_REPORT.md](TRUST_REPORT.md) "Retrieval configuration").
 3. A proposer model classifies the tier, citing only retrieved provisions.
 4. A critic model attempts to **refute** the classification from the same legal text: the way legal positions are actually stress-tested. One revision round, enforced by the graph, not the prompt.
 5. The run pauses on a checkpointed `interrupt()` until a human approves or overrides. With Postgres configured, the pause is durable: answer it tomorrow, after a redeploy, from a different serverless instance.
@@ -73,7 +73,7 @@ Optional: set `DATABASE_URL` (Neon/Supabase free tier) to make the approval gate
 | Orchestration | **LangGraph.js** `StateGraph`: fixed workflow, two model-made decisions (the tier; whether the critique sustains) | A free ReAct agent. Classification has a known procedure; an agent that *might* retrieve loses to a pipeline that *always* does. Flips if the task becomes open-ended research. |
 | Arbitration | **Proposer + critic** (one revision max, enforced by graph topology) | Single-shot classification. Cheaper, but it ships unexamined readings; the critic catches missed Annex III hooks and bad derogation claims. Flips for low-stakes, high-volume batch triage. |
 | HITL | **`interrupt()` + Postgres checkpointer**: durable pause, approve days later, full audit artifact | An in-process approval prompt (`await input()` with a timeout). Dies with the process, leaves no audit trail, and a timeout that silently returns "no answer" manufactures false confidence. This gap is common in hosted agent platforms; Article 14 makes durability the requirement, not a nicety. |
-| Retrieval | **Static Gemini embeddings + in-memory BM25, RRF-fused**: the Act is ~2,000 chunks; brute-force cosine is sub-millisecond and the demo needs zero retrieval infra | pgvector. Right answer at 100k+ chunks or a mutable corpus; this corpus changes only when the Official Journal does. Flips on corpus growth. |
+| Retrieval | **Static Gemini embeddings (dense cosine), in-memory**: the Act is ~2,000 chunks; brute-force cosine is sub-millisecond and the demo needs zero retrieval infra. Hybrid RRF was the original default but the scorecard showed it *underperforms* dense on this corpus (it lets a weak BM25 leg pollute the fusion); BM25 is kept as the zero-key fallback and a measured config, not the default. | pgvector. Right answer at 100k+ chunks or a mutable corpus; this corpus changes only when the Official Journal does. Flips on corpus growth. |
 | Chunking | **Structure-aware** (article paragraphs / annex points, parent-document expansion) | Fixed-size windows. Statutes have structure; windows cut Article 6(3) in half. The retrieval scorecard exists to test this claim, not assume it. |
 | Models | **Tiered Gemini**: Flash for gate/queries, Pro for propose/critique; temperature 0 on every eval-asserted path | One frontier model everywhere (2–4× the cost for no measured gain on routing/extraction), or fine-tuning (wrong tool: the knowledge lives in the corpus, and the corpus changes by re-ingest, not retraining). |
 | Hosting | **Vercel free tier**, SSE streaming, checkpoint-resume across invocations | A persistent VPS. Simpler for long-lived state, but the free-tier constraint forces the durable-checkpoint design to be real instead of decorative. |

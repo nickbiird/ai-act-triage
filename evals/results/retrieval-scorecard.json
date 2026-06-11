@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-06-11T05:58:33.343Z",
+ "generatedAt": "2026-06-11T11:47:25.399Z",
  "corpusVersion": "aia-oj-2024-06-13_ingested-2026-06-11",
  "configs": [
   {
@@ -7,6 +7,30 @@
    "queries": 60,
    "recallAt5": 0.26666666666666666,
    "mrr": 0.1663888888888889
+  },
+  {
+   "name": "dense-only",
+   "queries": 60,
+   "recallAt5": 0.9,
+   "mrr": 0.7680555555555555
+  },
+  {
+   "name": "hybrid",
+   "queries": 60,
+   "recallAt5": 0.6666666666666666,
+   "mrr": 0.48861111111111105
+  },
+  {
+   "name": "dense-only+query-transform",
+   "queries": 60,
+   "recallAt5": 0.9833333333333333,
+   "mrr": 0.8366666666666667
+  },
+  {
+   "name": "hybrid+query-transform",
+   "queries": 60,
+   "recallAt5": 0.9666666666666667,
+   "mrr": 0.821388888888889
   }
  ]
 }

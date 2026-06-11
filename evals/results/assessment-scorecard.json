@@ -1,0 +1,119 @@
+{
+ "generatedAt": "2026-06-11T12:34:50.193Z",
+ "corpusVersion": "aia-oj-2024-06-13_ingested-2026-06-11",
+ "models": {
+  "fast": "gemini-2.5-flash",
+  "deep": "gemini-2.5-pro"
+ },
+ "splits": {
+  "core": {
+   "total": 40,
+   "correct": 36,
+   "accuracy": 0.9
+  },
+  "contested": {
+   "total": 20,
+   "correct": 14,
+   "accuracy": 0.7
+  }
+ },
+ "confusion": {
+  "prohibited": {
+   "prohibited": 10,
+   "high_risk": 0,
+   "limited": 0,
+   "minimal": 0,
+   "guard_fail": 0,
+   "error": 0
+  },
+  "high_risk": {
+   "prohibited": 2,
+   "high_risk": 18,
+   "limited": 0,
+   "minimal": 0,
+   "guard_fail": 0,
+   "error": 0
+  },
+  "limited": {
+   "prohibited": 0,
+   "high_risk": 0,
+   "limited": 8,
+   "minimal": 0,
+   "guard_fail": 0,
+   "error": 0
+  },
+  "minimal": {
+   "prohibited": 0,
+   "high_risk": 7,
+   "limited": 1,
+   "minimal": 14,
+   "guard_fail": 0,
+   "error": 0
+  }
+ },
+ "citationFaithfulness": {
+  "totalCitations": 112,
+  "resolved": 112,
+  "rate": 1
+ },
+ "cost": {
+  "meanEurPerAssessment": 0.023832233333333334,
+  "totalEur": 1.429934
+ },
+ "latency": {
+  "p50Ms": 52978,
+  "p95Ms": 380969
+ },
+ "failures": [
+  {
+   "id": "contested-001",
+   "expected": "minimal",
+   "predicted": "high_risk"
+  },
+  {
+   "id": "contested-003",
+   "expected": "minimal",
+   "predicted": "high_risk"
+  },
+  {
+   "id": "contested-007",
+   "expected": "minimal",
+   "predicted": "high_risk"
+  },
+  {
+   "id": "contested-015",
+   "expected": "minimal",
+   "predicted": "high_risk"
+  },
+  {
+   "id": "contested-016",
+   "expected": "minimal",
+   "predicted": "high_risk"
+  },
+  {
+   "id": "contested-018",
+   "expected": "high_risk",
+   "predicted": "prohibited"
+  },
+  {
+   "id": "core-018",
+   "expected": "high_risk",
+   "predicted": "prohibited"
+  },
+  {
+   "id": "core-030",
+   "expected": "minimal",
+   "predicted": "limited"
+  },
+  {
+   "id": "core-036",
+   "expected": "minimal",
+   "predicted": "high_risk"
+  },
+  {
+   "id": "core-038",
+   "expected": "minimal",
+   "predicted": "high_risk"
+  }
+ ]
+}

@@ -1,0 +1,834 @@
+[
+ {
+  "id": "contested-001",
+  "expected": "minimal",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 4(a)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": true,
+  "costEur": 0.034424,
+  "latencyMs": 71671
+ },
+ {
+  "id": "contested-002",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 4(a)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.015653,
+  "latencyMs": 33619
+ },
+ {
+  "id": "contested-003",
+  "expected": "minimal",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Article 6(1)(a)",
+   "Annex III point 2",
+   "Annex III point 4(b)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.022017,
+  "latencyMs": 65019
+ },
+ {
+  "id": "contested-004",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "contested",
+  "citations": [
+   "Article 5(1)(f)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.025824,
+  "latencyMs": 38502
+ },
+ {
+  "id": "contested-005",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "contested",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 4(b)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.015121,
+  "latencyMs": 46423
+ },
+ {
+  "id": "contested-006",
+  "expected": "limited",
+  "predicted": "limited",
+  "split": "contested",
+  "citations": [
+   "Article 50(1)",
+   "Article 53(1)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.010972,
+  "latencyMs": 46082
+ },
+ {
+  "id": "contested-007",
+  "expected": "minimal",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Annex III point 5(b)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.035242,
+  "latencyMs": 85182
+ },
+ {
+  "id": "contested-008",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "contested",
+  "citations": [
+   "Annex III point 4(a)",
+   "Article 6(3)",
+   "Article 6(3)(d)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.034053,
+  "latencyMs": 391289
+ },
+ {
+  "id": "contested-009",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Article 6(1)(a)",
+   "Article 6(1)(b)",
+   "Article 3(14)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.021072,
+  "latencyMs": 43394
+ },
+ {
+  "id": "contested-010",
+  "expected": "limited",
+  "predicted": "limited",
+  "split": "contested",
+  "citations": [
+   "Article 50(1)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.014788,
+  "latencyMs": 45466
+ },
+ {
+  "id": "contested-011",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 3(b)",
+   "Annex III point 3(d)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.015948,
+  "latencyMs": 72295
+ },
+ {
+  "id": "contested-012",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 5(b)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.037318,
+  "latencyMs": 105573
+ },
+ {
+  "id": "contested-013",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "contested",
+  "citations": [
+   "Article 5(1)(c)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.017369,
+  "latencyMs": 82842
+ },
+ {
+  "id": "contested-014",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "contested",
+  "citations": [
+   "Article 5(1)(c)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.014929,
+  "latencyMs": 46304
+ },
+ {
+  "id": "contested-015",
+  "expected": "minimal",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Annex III point 5(d)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.037346,
+  "latencyMs": 108468
+ },
+ {
+  "id": "contested-016",
+  "expected": "minimal",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Annex III point 7(b)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.034339,
+  "latencyMs": 82607
+ },
+ {
+  "id": "contested-017",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Annex III point 8(b)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": true,
+  "costEur": 0.040239,
+  "latencyMs": 382798
+ },
+ {
+  "id": "contested-018",
+  "expected": "high_risk",
+  "predicted": "prohibited",
+  "split": "contested",
+  "citations": [
+   "Article 5(1)(f)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.020582,
+  "latencyMs": 63284
+ },
+ {
+  "id": "contested-019",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "contested",
+  "citations": [
+   "Annex III point 8(a)",
+   "Article 50(4a)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.023765,
+  "latencyMs": 55195
+ },
+ {
+  "id": "contested-020",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "contested",
+  "citations": [
+   "Article 6(1)(a)",
+   "Article 6(1)(b)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.012578,
+  "latencyMs": 338132
+ },
+ {
+  "id": "core-001",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(a)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.01708,
+  "latencyMs": 39247
+ },
+ {
+  "id": "core-002",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(b)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.020527,
+  "latencyMs": 40847
+ },
+ {
+  "id": "core-003",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(c)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.017633,
+  "latencyMs": 54664
+ },
+ {
+  "id": "core-004",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(d)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.024769,
+  "latencyMs": 44406
+ },
+ {
+  "id": "core-005",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(e)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.024752,
+  "latencyMs": 28945
+ },
+ {
+  "id": "core-006",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(f)",
+   "Article 3(39)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.026227,
+  "latencyMs": 33800
+ },
+ {
+  "id": "core-007",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(g)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.023027,
+  "latencyMs": 35518
+ },
+ {
+  "id": "core-008",
+  "expected": "prohibited",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(h)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.019808,
+  "latencyMs": 35168
+ },
+ {
+  "id": "core-009",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Annex III point 1(a)",
+   "Article 3(41)",
+   "Article 3(43)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.041191,
+  "latencyMs": 89012
+ },
+ {
+  "id": "core-010",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 2"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.012745,
+  "latencyMs": 31383
+ },
+ {
+  "id": "core-011",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 4(a)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.014987,
+  "latencyMs": 40407
+ },
+ {
+  "id": "core-012",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 4(a)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.017651,
+  "latencyMs": 35724
+ },
+ {
+  "id": "core-013",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 4(b)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.019246,
+  "latencyMs": 42194
+ },
+ {
+  "id": "core-014",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Annex III point 5(a)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.01364,
+  "latencyMs": 34241
+ },
+ {
+  "id": "core-015",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 5(b)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.015635,
+  "latencyMs": 342394
+ },
+ {
+  "id": "core-016",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Annex III point 5(c)",
+   "Article 6(2)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.015258,
+  "latencyMs": 43725
+ },
+ {
+  "id": "core-017",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Annex III point 5(d)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.016375,
+  "latencyMs": 30109
+ },
+ {
+  "id": "core-018",
+  "expected": "high_risk",
+  "predicted": "prohibited",
+  "split": "core",
+  "citations": [
+   "Article 5(1)(d)",
+   "Annex III point 6(d)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": true,
+  "costEur": 0.039165,
+  "latencyMs": 85859
+ },
+ {
+  "id": "core-019",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 7(c)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.01826,
+  "latencyMs": 39986
+ },
+ {
+  "id": "core-020",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 8(a)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.01627,
+  "latencyMs": 36289
+ },
+ {
+  "id": "core-021",
+  "expected": "high_risk",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(1)(a)",
+   "Article 6(1)(b)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.015929,
+  "latencyMs": 44006
+ },
+ {
+  "id": "core-022",
+  "expected": "limited",
+  "predicted": "limited",
+  "split": "core",
+  "citations": [
+   "Article 50(1)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.013489,
+  "latencyMs": 39606
+ },
+ {
+  "id": "core-023",
+  "expected": "limited",
+  "predicted": "limited",
+  "split": "core",
+  "citations": [
+   "Article 50(1)",
+   "Article 50(4)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.017131,
+  "latencyMs": 340747
+ },
+ {
+  "id": "core-024",
+  "expected": "limited",
+  "predicted": "limited",
+  "split": "core",
+  "citations": [
+   "Article 50(2)",
+   "Article 50(4)",
+   "Article 3(60)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.021692,
+  "latencyMs": 39003
+ },
+ {
+  "id": "core-025",
+  "expected": "limited",
+  "predicted": "limited",
+  "split": "core",
+  "citations": [
+   "Article 50(4)",
+   "Article 3(60)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.02199,
+  "latencyMs": 57489
+ },
+ {
+  "id": "core-026",
+  "expected": "limited",
+  "predicted": "limited",
+  "split": "core",
+  "citations": [
+   "Article 50(4)",
+   "Article 3(60)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.023172,
+  "latencyMs": 49363
+ },
+ {
+  "id": "core-027",
+  "expected": "limited",
+  "predicted": "limited",
+  "split": "core",
+  "citations": [
+   "Article 50(4)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.01432,
+  "latencyMs": 152752
+ },
+ {
+  "id": "core-028",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.022745,
+  "latencyMs": 52978
+ },
+ {
+  "id": "core-029",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Annex III point 5(b)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.015211,
+  "latencyMs": 39248
+ },
+ {
+  "id": "core-030",
+  "expected": "minimal",
+  "predicted": "limited",
+  "split": "core",
+  "citations": [
+   "Article 50(1)",
+   "Annex III point 1(a)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": true,
+  "costEur": 0.051069,
+  "latencyMs": 380969
+ },
+ {
+  "id": "core-031",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Annex III point 5(c)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.025501,
+  "latencyMs": 53679
+ },
+ {
+  "id": "core-032",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Article 6(1)(a)",
+   "Annex III point 2",
+   "Article 3(14)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.050362,
+  "latencyMs": 83829
+ },
+ {
+  "id": "core-033",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Annex III"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.014697,
+  "latencyMs": 42853
+ },
+ {
+  "id": "core-034",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Annex III point 4(b)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.035858,
+  "latencyMs": 94235
+ },
+ {
+  "id": "core-035",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Annex III point 4(b)",
+   "Article 6(2)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.04605,
+  "latencyMs": 99502
+ },
+ {
+  "id": "core-036",
+  "expected": "minimal",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 4(b)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.038551,
+  "latencyMs": 109565
+ },
+ {
+  "id": "core-037",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Annex III point 5"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.020641,
+  "latencyMs": 50510
+ },
+ {
+  "id": "core-038",
+  "expected": "minimal",
+  "predicted": "high_risk",
+  "split": "core",
+  "citations": [
+   "Annex III point 4(b)",
+   "Article 6(3)"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": true,
+  "costEur": 0.032052,
+  "latencyMs": 81298
+ },
+ {
+  "id": "core-039",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Annex III point 2"
+  ],
+  "critiqueVerdict": "sustain",
+  "revised": false,
+  "costEur": 0.014588,
+  "latencyMs": 80595
+ },
+ {
+  "id": "core-040",
+  "expected": "minimal",
+  "predicted": "minimal",
+  "split": "core",
+  "citations": [
+   "Article 6(2)",
+   "Annex III point 1(c)"
+  ],
+  "critiqueVerdict": "object",
+  "revised": true,
+  "costEur": 0.037061,
+  "latencyMs": 80965
+ }
+]

@@ -1,12 +1,25 @@
 /**
- * Hybrid retrieval over the Act: BM25 (MiniSearch) + dense cosine (static
- * Gemini embeddings) fused with Reciprocal Rank Fusion, then parent-document
+ * Retrieval over the Act: BM25 (MiniSearch) and dense cosine (static Gemini
+ * embeddings), with optional Reciprocal Rank Fusion, then parent-document
  * expansion to the full Article/Annex.
  *
- * Why hybrid: legal terms-of-art are exact-match territory ("biometric
- * categorisation", "general-purpose AI model") — BM25 wins those. User
- * descriptions are paraphrase ("our chatbot guesses how angry the caller is")
- * — dense wins those. RRF needs no score calibration between the two.
+ * Default leg: DENSE (with BM25-only fallback when embeddings are absent).
+ * The original design fused both legs (RRF) by default on the thesis that
+ * legal terms-of-art are exact-match territory where BM25 wins. The retrieval
+ * scorecard refuted that on this corpus: dense-only scores recall@5 90.0% vs
+ * fused-hybrid 66.7% (single query) and 96.7% vs 96.7% (live multi-query +
+ * query-transform, where dense edges it on MRR). RRF lets a weak/noisy BM25
+ * leg (26.7% alone) pollute dense's strong ordering — chunks both legs happen
+ * to surface get the additive bonus and leapfrog the dense-relevant chunk past
+ * the parent-expansion cutoff. No fusion weighting recovered dense's score
+ * (best down-weighted hybrid: 80%). So the default is dense.
+ *
+ * BM25 is retained, not deleted: it is the deterministic CI gate (runs with no
+ * API key) and the eval is paraphrase-heavy by construction (see evals/
+ * retrieval.ts) — it does not exercise the exact-statute-term queries where
+ * BM25's value would show. 'hybrid' stays a selectable, measured mode so the
+ * trade-off stays visible in the scorecard rather than being silently dropped.
+ * See TRUST_REPORT.md "Retrieval configuration" for the full decision record.
  *
  * Degradation: no embeddings file -> BM25-only, and the result says so.
  * The retrieval scorecard (npm run evals:retrieval) measures all configs.
@@ -85,7 +98,7 @@ export async function retrieve(
   const emb = loadEmbeddings();
   const apiKey = opts.apiKey ?? process.env.GOOGLE_API_KEY;
 
-  let mode: RetrievalMode = opts.mode ?? 'hybrid';
+  let mode: RetrievalMode = opts.mode ?? 'dense-only';
   if (mode !== 'bm25-only' && (!emb.present || !apiKey)) mode = 'bm25-only';
 
   // BM25 leg

@@ -121,6 +121,11 @@ async function main() {
   if (emb.present && process.env.GOOGLE_API_KEY) {
     configs.push(await evalConfig(cases, 'dense-only'));
     configs.push(await evalConfig(cases, 'hybrid'));
+    // dense-only+query-transform is the LIVE pipeline config (the default leg
+    // is dense; planQueries supplies the multi-query transform). hybrid+QT is
+    // kept alongside it so the scorecard still shows the fused leg's number and
+    // the decision to default to dense stays auditable, not asserted.
+    configs.push(await evalQueryTransform(cases, 'dense-only'));
     configs.push(await evalQueryTransform(cases, 'hybrid'));
   } else {
     console.log('dense/hybrid skipped: ' + (emb.present ? 'GOOGLE_API_KEY missing' : 'data/embeddings.json missing (run npm run ingest:embed)'));
