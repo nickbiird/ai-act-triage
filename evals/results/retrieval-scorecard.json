@@ -1,12 +1,12 @@
 {
- "generatedAt": "2026-06-10T21:30:34.376Z",
- "corpusVersion": "aia-oj-2024-06-13_ingested-2026-06-10",
+ "generatedAt": "2026-06-11T05:58:33.343Z",
+ "corpusVersion": "aia-oj-2024-06-13_ingested-2026-06-11",
  "configs": [
   {
    "name": "bm25-only",
    "queries": 60,
-   "recallAt5": 0.25,
-   "mrr": 0.1538888888888889
+   "recallAt5": 0.26666666666666666,
+   "mrr": 0.1663888888888889
   }
  ]
 }

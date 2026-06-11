@@ -52,7 +52,7 @@ async function main() {
       lines.push(`| ${split} | ${s.total} | ${s.correct} | ${pct(s.accuracy)} |`);
     }
     lines.push('');
-    lines.push(`Core labels fall near-deterministically out of Article 5 / Annex III / Article 50. Contested labels follow the published rubric and measure agreement with one documented reading, not ground truth — that is why they are reported separately.`);
+    lines.push(`Core labels fall near-deterministically out of Article 5 / Annex III / Article 50. Contested labels follow the published rubric and measure agreement with one documented reading, not ground truth; that is why they are reported separately.`);
     if (a.failures.length) {
       lines.push('');
       lines.push(`Misclassifications: ${a.failures.map((f) => `\`${f.id}\` (expected ${f.expected}, got ${f.predicted})`).join(', ')}.`);
@@ -97,7 +97,7 @@ async function main() {
     lines.push(`${passed}/${p.probes.length} passed (run ${p.generatedAt}).`);
     lines.push('');
     for (const probe of p.probes) {
-      lines.push(`- ${probe.passed ? '✅' : '❌'} **${probe.kind}** — ${probe.note}`);
+      lines.push(`- ${probe.passed ? '✅' : '❌'} **${probe.kind}**: ${probe.note}`);
     }
     lines.push('');
     lines.push('A finite probe set shows the defences fire on these shapes, including one indirect injection through poisoned retrieval context. It does not prove absence of injection risk.');
@@ -119,7 +119,7 @@ async function main() {
 
   lines.push('## Where the human sits');
   lines.push('');
-  lines.push('Every interactive assessment pauses on a checkpointed `interrupt()` before the report exists. With `DATABASE_URL` set the pause is durable (Postgres checkpointer): it survives restarts, deploys, and fresh serverless invocations. Without it the gate degrades to in-memory and a restart loses the pending approval — the UI and this report say which mode is live rather than letting the degradation pass silently. Eval runs bypass the gate explicitly (`auto_approve`), because evals measure the model pipeline and the gate is process.');
+  lines.push('Every interactive assessment pauses on a checkpointed `interrupt()` before the report exists. With `DATABASE_URL` set the pause is durable (Postgres checkpointer): it survives restarts, deploys, and fresh serverless invocations. Without it the gate degrades to in-memory and a restart loses the pending approval; the UI and this report say which mode is live rather than letting the degradation pass silently. Eval runs bypass the gate explicitly (`auto_approve`), because evals measure the model pipeline and the gate is process.');
   lines.push('');
 
   await writeFile(path.join(root, 'TRUST_REPORT.md'), lines.join('\n'));

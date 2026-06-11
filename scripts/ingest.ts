@@ -62,6 +62,9 @@ function htmlToText(html: string): string {
     .replace(/&#8220;|&ldquo;/g, '“')
     .replace(/&#8221;|&rdquo;/g, '”')
     .replace(/&#8211;|&ndash;/g, '–')
+    // the mirror appends "Related: Recital N[, M...]" cross-reference widgets
+    // inside the legal-text container; site navigation, not statute text
+    .replace(/Related:\s*Recitals?\s*[\d\s,]*(?:and\s*\d+\s*)?[\d\s,]*/g, ' ')
     .replace(/[\t ]+/g, ' ')
     .replace(/ ?\n ?/g, '\n')
     .replace(/\n{2,}/g, '\n')

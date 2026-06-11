@@ -26,8 +26,8 @@ interface GoldenCase {
 }
 
 /**
- * First measured run (2026-06-10, corpus aia-oj-2024-06-13): bm25-only
- * recall@5 = 25.0% on RAW descriptions. Low by design — product-lead
+ * Measured baseline (corpus aia-oj-2024-06-13, residue-cleaned): bm25-only
+ * recall@5 = 26.7% on RAW descriptions. Low by design — product-lead
  * paraphrase ("imperceptible flicker patterns") misses statute vocabulary
  * ("subliminal techniques"). That gap is the measured argument for the dense
  * leg and for query transformation; the gate sits just under the baseline and

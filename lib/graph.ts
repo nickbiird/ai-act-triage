@@ -212,6 +212,10 @@ async function gate(state: S, config?: RunnableConfig): Promise<Partial<S>> {
 async function report(state: S): Promise<Partial<S>> {
   const proposal = state.proposal!;
   const finalTier: Tier = state.decision?.tierOverride ?? proposal.tier;
+  const rejected = state.decision ? !state.decision.approved && !state.decision.tierOverride : false;
+  const humanNote = rejected
+    ? `Rejected by reviewer${state.decision?.note ? `: ${state.decision.note}` : ''} — treat this assessment as void.`
+    : state.decision?.note ?? null;
   const citations: Citation[] = proposal.citations.map((ref) => {
     const docId = citationToDocId(ref);
     const resolves = citationResolves(ref);
@@ -227,7 +231,7 @@ async function report(state: S): Promise<Partial<S>> {
       tier: finalTier,
       tierLabel: TIER_LABEL[finalTier],
       decidedByHuman: Boolean(state.decision) && state.decision!.note !== 'auto-approved (eval mode)',
-      humanNote: state.decision?.note ?? null,
+      humanNote,
       proposal,
       critique: state.critique,
       revised: state.revisionCount > 0,
