@@ -2,6 +2,11 @@
 
 [![ci](https://github.com/nickbiird/ai-act-triage/actions/workflows/ci.yml/badge.svg)](https://github.com/nickbiird/ai-act-triage/actions/workflows/ci.yml)
 
+<!-- DEMO — replace docs/demo.gif with your Kap recording (see "Demo & deploy" below); set the live URL after the Vercel deploy. -->
+![ai-act-triage — recorded demo, replayed client-side with zero API calls](docs/demo.gif)
+
+**▶ Try it for free.** The **Run recorded demo** button replays a *real* committed assessment entirely client-side — **no API key, zero model calls** — so you can watch the full pipeline → adversarial critic → durable approval gate → cited report without spending a cent. The live **Assess** path runs the real graph with your own key. **[Live demo →](https://ai-act-triage.vercel.app)** _(URL set after deploy)_
+
 **Describe an AI use case in plain language; get a cited EU AI Act risk-tier classification that has survived an adversarial review and a human approval gate: for cents, in seconds, with the eval scorecard published.**
 
 Triage, not legal advice. That distinction is load-bearing and repeated throughout.
@@ -54,8 +59,11 @@ npm test                  # unit gates: corpus, retrieval, PII rail, obligations
 npm run evals:retrieval   # BM25 retrieval scorecard
 npx tsx evals/run.ts --replay   # scores committed eval fixtures, zero model calls
 
-# Full pipeline (free Google AI Studio key):
-cp .env.example .env      # add GOOGLE_API_KEY
+# Full pipeline — reasoning defaults to Claude (provider-agnostic):
+cp .env.example .env      # add ANTHROPIC_API_KEY (LLM_PROVIDER=anthropic, the default)
+                          #   ...or set LLM_PROVIDER=google + GOOGLE_API_KEY for Gemini reasoning
+# Dense retrieval is Gemini-only (Anthropic has no embeddings API). With a
+# GOOGLE_API_KEY, enable it once; without one, retrieval degrades to BM25-only:
 npm run ingest:embed      # one-off: static dense embeddings (costs cents)
 npm run dev               # http://localhost:3000
 
@@ -75,7 +83,7 @@ Optional: set `DATABASE_URL` (Neon/Supabase free tier) to make the approval gate
 | HITL | **`interrupt()` + Postgres checkpointer**: durable pause, approve days later, full audit artifact | An in-process approval prompt (`await input()` with a timeout). Dies with the process, leaves no audit trail, and a timeout that silently returns "no answer" manufactures false confidence. This gap is common in hosted agent platforms; Article 14 makes durability the requirement, not a nicety. |
 | Retrieval | **Static Gemini embeddings (dense cosine), in-memory**: the Act is ~2,000 chunks; brute-force cosine is sub-millisecond and the demo needs zero retrieval infra. Hybrid RRF was the original default but the scorecard showed it *underperforms* dense on this corpus (it lets a weak BM25 leg pollute the fusion); BM25 is kept as the zero-key fallback and a measured config, not the default. | pgvector. Right answer at 100k+ chunks or a mutable corpus; this corpus changes only when the Official Journal does. Flips on corpus growth. |
 | Chunking | **Structure-aware** (article paragraphs / annex points, parent-document expansion) | Fixed-size windows. Statutes have structure; windows cut Article 6(3) in half. The retrieval scorecard exists to test this claim, not assume it. |
-| Models | **Tiered Gemini**: Flash for gate/queries, Pro for propose/critique; temperature 0 on every eval-asserted path | One frontier model everywhere (2–4× the cost for no measured gain on routing/extraction), or fine-tuning (wrong tool: the knowledge lives in the corpus, and the corpus changes by re-ingest, not retraining). |
+| Models | **Provider-agnostic + tiered** (`LLM_PROVIDER`): Anthropic (Haiku 4.5 gate/queries / Sonnet 4.6 propose/critique) by default, or Gemini (Flash / Pro); temperature 0 on every eval-asserted path | One frontier model everywhere (2–4× the cost for no measured gain on routing/extraction), or fine-tuning (wrong tool: the knowledge lives in the corpus, and the corpus changes by re-ingest, not retraining). The reasoning provider and the embeddings provider are decoupled — only Google offers embeddings, so the dense retrieval leg is Gemini-only; Anthropic-only runs degrade to BM25. |
 | Hosting | **Vercel free tier**, SSE streaming, checkpoint-resume across invocations | A persistent VPS. Simpler for long-lived state, but the free-tier constraint forces the durable-checkpoint design to be real instead of decorative. |
 | Evals | **Golden set + programmatic scorers in CI** (tier match, citation resolution, retrieval recall, injection probes) | LLM-as-judge for the headline numbers. Judges drift and flatter; every gated metric here is deterministic. A judged metric, if added, gets labelled as judged with its calibration rate. |
 

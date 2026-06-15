@@ -21,7 +21,10 @@
  * trade-off stays visible in the scorecard rather than being silently dropped.
  * See TRUST_REPORT.md "Retrieval configuration" for the full decision record.
  *
- * Degradation: no embeddings file -> BM25-only, and the result says so.
+ * Degradation: no embeddings file OR no key -> BM25-only up front; a dense call
+ * that FAILS at runtime (revoked/over-restricted key, quota, network) is caught
+ * and degraded to BM25 per-query rather than crashing the assessment. Either way
+ * the result's `mode` says 'bm25-only', so the degradation is surfaced, not hidden.
  * The retrieval scorecard (npm run evals:retrieval) measures all configs.
  */
 
@@ -101,8 +104,8 @@ export async function retrieve(
   let mode: RetrievalMode = opts.mode ?? 'dense-only';
   if (mode !== 'bm25-only' && (!emb.present || !apiKey)) mode = 'bm25-only';
 
-  // BM25 leg
-  const bm25Ranked: string[] =
+  // BM25 leg (dense-only skips it unless the dense leg fails below)
+  let bm25Ranked: string[] =
     mode === 'dense-only'
       ? []
       : bm25Index()
@@ -113,12 +116,27 @@ export async function retrieve(
   // dense leg
   let denseRanked: string[] = [];
   if (mode !== 'bm25-only') {
-    const qv = await embedQuery(query, apiKey!);
-    denseRanked = [...emb.vectors.entries()]
-      .map(([id, v]) => [id, dot(qv, v)] as const)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 50)
-      .map(([id]) => id);
+    try {
+      const qv = await embedQuery(query, apiKey!);
+      denseRanked = [...emb.vectors.entries()]
+        .map(([id, v]) => [id, dot(qv, v)] as const)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 50)
+        .map(([id]) => id);
+    } catch (err) {
+      // Embeddings unavailable at CALL time (revoked / over-restricted key, quota,
+      // network) — distinct from an absent key, which is handled above. Degrade to
+      // BM25 for this query instead of crashing the whole assessment. The committed
+      // scorecard still records dense as the measured winner; this is the runtime
+      // safety net, surfaced honestly in the result mode (-> 'bm25-only').
+      console.warn(
+        `[retrieval] dense leg failed (${err instanceof Error ? err.message : String(err)}); degrading to BM25-only for this query.`,
+      );
+      mode = 'bm25-only';
+      if (bm25Ranked.length === 0) {
+        bm25Ranked = bm25Index().search(query).slice(0, 50).map((r) => r.id as string);
+      }
+    }
   }
 
   // Reciprocal Rank Fusion

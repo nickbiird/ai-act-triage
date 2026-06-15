@@ -17,6 +17,7 @@ import { loadCorpus, citationToDocId, getDoc } from '@/lib/corpus';
 import { buildGraph } from '@/lib/graph';
 import { MemorySaver } from '@langchain/langgraph';
 import { DISCLAIMER } from '@/lib/types';
+import { hasModelKey, MODEL_KEY_VAR, PROVIDER } from '@/lib/llm';
 
 export const maxDuration = 60;
 
@@ -57,8 +58,8 @@ const handler = createMcpHandler(
       'Run the full triage pipeline (retrieval -> proposer -> adversarial critic) on an AI use-case description and return the draft risk tier with citations. IMPORTANT: this draft is UNGATED — the human-approval step that the web flow enforces cannot ride a synchronous tool call. Treat the result as triage input, not a decision.',
       { description: z.string().min(30).max(4000).describe('plain-language description of the AI system: what it does, where it is deployed, who it affects') },
       async ({ description }) => {
-        if (!process.env.GOOGLE_API_KEY) {
-          return text({ error: 'GOOGLE_API_KEY not configured on this deployment.' });
+        if (!hasModelKey()) {
+          return text({ error: `${MODEL_KEY_VAR} not configured on this deployment (LLM_PROVIDER=${PROVIDER}).` });
         }
         const graph = buildGraph().compile({ checkpointer: new MemorySaver() });
         const out = await graph.invoke(

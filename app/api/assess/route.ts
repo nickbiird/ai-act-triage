@@ -3,14 +3,15 @@ import { buildGraph } from '@/lib/graph';
 import { getCheckpointer } from '@/lib/checkpointer';
 import { checkRateLimit } from '@/lib/ratelimit';
 import { sseResponse } from '@/lib/stream';
+import { hasModelKey, MODEL_KEY_VAR, PROVIDER } from '@/lib/llm';
 
 export const maxDuration = 60;
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
-  if (!process.env.GOOGLE_API_KEY) {
+  if (!hasModelKey()) {
     return Response.json(
-      { error: 'GOOGLE_API_KEY is not configured on this deployment. Clone the repo and run it with your own key — see README.' },
+      { error: `${MODEL_KEY_VAR} is not configured on this deployment (LLM_PROVIDER=${PROVIDER}). Try the free recorded demo, or clone the repo and run it live with your own key — see README.` },
       { status: 503 },
     );
   }

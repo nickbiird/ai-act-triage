@@ -5,6 +5,21 @@ import { TierBadge } from '@/components/TierBadge';
 
 type Phase = 'idle' | 'running' | 'awaiting' | 'done' | 'failed';
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+interface SseEvent {
+  type: 'meta' | 'node' | 'awaiting_approval' | 'report' | 'guard_fail' | 'error';
+  node?: string;
+  data?: unknown;
+  threadId?: string;
+}
+
+interface DemoFixture {
+  description: string;
+  preEvents: SseEvent[];
+  postEvents: SseEvent[];
+}
+
 interface TraceItem {
   node: string;
   data: unknown;
@@ -66,6 +81,8 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [note, setNote] = useState('');
   const [override, setOverride] = useState('');
+  const [demo, setDemo] = useState(false);
+  const demoRef = useRef<DemoFixture | null>(null);
   const threadRef = useRef<string | null>(null);
 
   async function consume(res: Response) {
@@ -86,43 +103,81 @@ export default function Home() {
       buf = parts.pop() ?? '';
       for (const part of parts) {
         if (!part.startsWith('data: ')) continue;
-        const evt = JSON.parse(part.slice(6));
-        if (evt.type === 'meta') threadRef.current = evt.threadId;
-        else if (evt.type === 'node') setTrace((t) => [...t, { node: evt.node, data: evt.data }]);
-        else if (evt.type === 'awaiting_approval') {
-          setApproval(evt.data);
-          setPhase('awaiting');
-        } else if (evt.type === 'report') {
-          setReport(evt.data);
-          setPhase('done');
-        } else if (evt.type === 'guard_fail') {
-          setError(String(evt.data));
-          setPhase('failed');
-        } else if (evt.type === 'error') {
-          setError(String(evt.data));
-          setPhase('failed');
-        }
+        applyEvent(JSON.parse(part.slice(6)));
       }
     }
   }
 
-  async function assess() {
-    setPhase('running');
+  // Single event handler shared by the live SSE stream (consume) and the
+  // client-side recorded-demo replay (runDemo), so both render identically.
+  function applyEvent(evt: SseEvent) {
+    if (evt.type === 'meta') threadRef.current = evt.threadId ?? null;
+    else if (evt.type === 'node') setTrace((t) => [...t, { node: evt.node!, data: evt.data }]);
+    else if (evt.type === 'awaiting_approval') {
+      setApproval(evt.data as never);
+      setPhase('awaiting');
+    } else if (evt.type === 'report') {
+      setReport(evt.data as never);
+      setPhase('done');
+    } else if (evt.type === 'guard_fail') {
+      setError(String(evt.data));
+      setPhase('failed');
+    } else if (evt.type === 'error') {
+      setError(String(evt.data));
+      setPhase('failed');
+    }
+  }
+
+  // Replays a committed real assessment (public/demo-run.json) entirely client-
+  // side: no /api/assess call, no key, zero model spend. It animates the SAME
+  // trace -> durable gate -> report the live path streams, feeding the identical
+  // event shapes through applyEvent.
+  async function runDemo() {
     setTrace([]);
     setReport(null);
     setApproval(null);
     setError(null);
-    await consume(
-      await fetch('/api/assess', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ description }),
-      }),
-    );
+    setNote('');
+    setOverride('');
+    let data: DemoFixture;
+    try {
+      const r = await fetch('/demo-run.json', { cache: 'no-store' });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      data = await r.json();
+    } catch {
+      setError('Recorded demo fixture not found — run `npm run capture:demo` (or hand-author public/demo-run.json) first.');
+      setPhase('failed');
+      return;
+    }
+    demoRef.current = data;
+    setDemo(true);
+    setDescription(data.description);
+    setPhase('running');
+    for (const evt of data.preEvents) {
+      await sleep(evt.type === 'awaiting_approval' ? 400 : 850);
+      applyEvent(evt);
+    }
   }
 
   async function decide(approved: boolean) {
     setPhase('running');
+    if (demo && demoRef.current) {
+      // Recorded-demo replay: the committed run was approved at capture time, so
+      // "Approve" plays the captured gate + report; a reject is synthesised
+      // client-side (no second recorded path), keeping it honest.
+      if (approved) {
+        for (const evt of demoRef.current.postEvents) {
+          await sleep(700);
+          applyEvent(evt);
+        }
+      } else {
+        await sleep(500);
+        setReport(null);
+        setError('Rejected at the gate — in the recorded demo only the approve path is captured. Clone the repo and run it live to reject.');
+        setPhase('failed');
+      }
+      return;
+    }
     await consume(
       await fetch('/api/resume', {
         method: 'POST',
@@ -133,6 +188,23 @@ export default function Home() {
           tierOverride: override || null,
           note: note || null,
         }),
+      }),
+    );
+  }
+
+  async function assess() {
+    setPhase('running');
+    setDemo(false);
+    demoRef.current = null;
+    setTrace([]);
+    setReport(null);
+    setApproval(null);
+    setError(null);
+    await consume(
+      await fetch('/api/assess', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ description }),
       }),
     );
   }
@@ -168,13 +240,26 @@ export default function Home() {
               {s.label}
             </button>
           ))}
+          <button
+            className="rounded-md border border-stone-300 bg-white px-3 py-2 text-sm font-medium text-stone-800 hover:bg-stone-50 disabled:opacity-40"
+            disabled={phase === 'running'}
+            title="Replays a committed real assessment client-side — no API key, zero model calls"
+            onClick={runDemo}
+          >
+            ▶ Run recorded demo <span className="text-stone-400">· free, no key</span>
+          </button>
           <div className="grow" />
+          {demo && (
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800">
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-500" /> recorded demo · 0 API calls
+            </span>
+          )}
           <button
             className="rounded-md bg-stone-900 px-4 py-2 text-sm font-medium text-white hover:bg-stone-700 disabled:opacity-40"
             disabled={phase === 'running' || description.trim().length < 30}
             onClick={assess}
           >
-            {phase === 'running' ? 'Assessing…' : 'Assess'}
+            {phase === 'running' && !demo ? 'Assessing…' : 'Assess'}
           </button>
         </div>
       </section>

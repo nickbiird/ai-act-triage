@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "provenance": "Real two-phase assessment captured via 'npm run capture:demo' on anthropic (claude-haiku-4-5 fast / claude-sonnet-4-6 deep). The web \"Run recorded demo\" button replays THIS run client-side with zero API calls. Synthetic clean-room use case; no PII; open-sourceable by construction.",
+  "captured_at": "2026-06-15T12:17:35.877Z",
+  "description": "We are a Spanish logistics company with 800 employees. We want to deploy a tool that reads incoming CVs, scores candidates from 1 to 100 on predicted job fit, and auto-rejects the bottom 60% before a recruiter ever sees them.",
+  "preEvents": [
+    {
+      "type": "node",
+      "node": "guard",
+      "data": {
+        "piiFound": []
+      }
+    },
+    {
+      "type": "node",
+      "node": "plan_queries",
+      "data": {
+        "queries": [
+          "automated decision-making in recruitment and CV screening",
+          "high-risk AI systems for employment and hiring decisions",
+          "automated rejection of job applicants without human review",
+          "legal obligations for AI systems used in recruitment and candidate evaluation"
+        ]
+      }
+    },
+    {
+      "type": "node",
+      "node": "retrieve",
+      "data": {
+        "mode": "bm25-only",
+        "parents": [
+          "Article 86: Right to Explanation of Individual Decision-Making",
+          "Article 6: Classification Rules for High-Risk AI Systems",
+          "Article 112: Evaluation and Review",
+          "Article 111: AI Systems Already Placed on the Market or put into Service and General-Purpose AI Models Already Placed on the Marked [sic]",
+          "Annex III: High-Risk AI Systems Referred to in Article 6(2)",
+          "Article 50: Transparency Obligations for Providers and Deployers of Certain AI Systems"
+        ]
+      }
+    },
+    {
+      "type": "node",
+      "node": "propose",
+      "data": {
+        "tier": "high_risk",
+        "citations": [
+          "Annex III point 4(a)",
+          "Article 6(2)",
+          "Article 6(3)"
+        ],
+        "reasoning": "The system reads CVs, scores candidates, and auto-rejects the bottom 60% — this is squarely an AI system used for the recruitment or selection of natural persons, specifically to \"analyse and filter job applications, and to evaluate candidates,\" which is explicitly listed in Annex III point 4(a). Under Article 6(2), all systems listed in Annex III are high-risk. The Article 6(3) derogations cannot apply here: the system does not perform a narrow procedural task, does not merely improve a previously completed human activity, and — critically — it auto-rejects candidates before any recruiter sees them, meaning it materially influences the outcome of decision-making and replaces rather than assists human assessment. Furthermore, scoring each candidate from 1–100 on predicted job fit constitutes profiling of natural persons, and Article 6(3) explicitly states that an Annex III system \"shall always be considered to be high-risk where the AI system performs profiling of natural persons.\" No derogation is available.",
+        "borderline": false,
+        "borderline_note": ""
+      }
+    },
+    {
+      "type": "node",
+      "node": "critic",
+      "data": {
+        "verdict": "sustain",
+        "objection": "",
+        "objection_citations": [],
+        "suggested_tier": "none"
+      }
+    },
+    {
+      "type": "awaiting_approval",
+      "threadId": "capture-demo",
+      "data": {
+        "kind": "approval_request",
+        "proposal": {
+          "tier": "high_risk",
+          "citations": [
+            "Annex III point 4(a)",
+            "Article 6(2)",
+            "Article 6(3)"
+          ],
+          "reasoning": "The system reads CVs, scores candidates, and auto-rejects the bottom 60% — this is squarely an AI system used for the recruitment or selection of natural persons, specifically to \"analyse and filter job applications, and to evaluate candidates,\" which is explicitly listed in Annex III point 4(a). Under Article 6(2), all systems listed in Annex III are high-risk. The Article 6(3) derogations cannot apply here: the system does not perform a narrow procedural task, does not merely improve a previously completed human activity, and — critically — it auto-rejects candidates before any recruiter sees them, meaning it materially influences the outcome of decision-making and replaces rather than assists human assessment. Furthermore, scoring each candidate from 1–100 on predicted job fit constitutes profiling of natural persons, and Article 6(3) explicitly states that an Annex III system \"shall always be considered to be high-risk where the AI system performs profiling of natural persons.\" No derogation is available.",
+          "borderline": false,
+          "borderline_note": ""
+        },
+        "critique": {
+          "verdict": "sustain",
+          "objection": "",
+          "objection_citations": [],
+          "suggested_tier": "none"
+        },
+        "piiFound": []
+      }
+    }
+  ],
+  "postEvents": [
+    {
+      "type": "node",
+      "node": "gate",
+      "data": {
+        "approved": true,
+        "tierOverride": null,
+        "note": null
+      }
+    },
+    {
+      "type": "report",
+      "node": "report_node",
+      "data": {
+        "tier": "high_risk",
+        "tierLabel": "High-risk (Article 6 / Annex III)",
+        "decidedByHuman": true,
+        "humanNote": null,
+        "proposal": {
+          "tier": "high_risk",
+          "citations": [
+            "Annex III point 4(a)",
+            "Article 6(2)",
+            "Article 6(3)"
+          ],
+          "reasoning": "The system reads CVs, scores candidates, and auto-rejects the bottom 60% — this is squarely an AI system used for the recruitment or selection of natural persons, specifically to \"analyse and filter job applications, and to evaluate candidates,\" which is explicitly listed in Annex III point 4(a). Under Article 6(2), all systems listed in Annex III are high-risk. The Article 6(3) derogations cannot apply here: the system does not perform a narrow procedural task, does not merely improve a previously completed human activity, and — critically — it auto-rejects candidates before any recruiter sees them, meaning it materially influences the outcome of decision-making and replaces rather than assists human assessment. Furthermore, scoring each candidate from 1–100 on predicted job fit constitutes profiling of natural persons, and Article 6(3) explicitly states that an Annex III system \"shall always be considered to be high-risk where the AI system performs profiling of natural persons.\" No derogation is available.",
+          "borderline": false,
+          "borderline_note": ""
+        },
+        "critique": {
+          "verdict": "sustain",
+          "objection": "",
+          "objection_citations": [],
+          "suggested_tier": "none"
+        },
+        "revised": false,
+        "citations": [
+          {
+            "ref": "Annex III point 4(a)",
+            "resolves": true,
+            "docId": "annex-3",
+            "sourceUrl": "https://artificialintelligenceact.eu/annex/3/"
+          },
+          {
+            "ref": "Article 6(2)",
+            "resolves": true,
+            "docId": "art-6",
+            "sourceUrl": "https://artificialintelligenceact.eu/article/6/"
+          },
+          {
+            "ref": "Article 6(3)",
+            "resolves": true,
+            "docId": "art-6",
+            "sourceUrl": "https://artificialintelligenceact.eu/article/6/"
+          }
+        ],
+        "obligations": [
+          {
+            "text": "Establish a risk management system covering the full lifecycle.",
+            "basis": "Article 9"
+          },
+          {
+            "text": "Apply data governance: training/validation/test data must be relevant, representative, and as error-free as feasible.",
+            "basis": "Article 10"
+          },
+          {
+            "text": "Produce and maintain technical documentation before market placement.",
+            "basis": "Article 11"
+          },
+          {
+            "text": "Build in automatic event logging across the system lifetime.",
+            "basis": "Article 12"
+          },
+          {
+            "text": "Design for transparency: instructions for use that deployers can actually follow.",
+            "basis": "Article 13"
+          },
+          {
+            "text": "Design effective human oversight — including the ability to intervene, override, or interrupt.",
+            "basis": "Article 14"
+          },
+          {
+            "text": "Meet accuracy, robustness, and cybersecurity requirements appropriate to the purpose.",
+            "basis": "Article 15"
+          },
+          {
+            "text": "Run conformity assessment and affix CE marking before placing on the market; register in the EU database.",
+            "basis": "Articles 43, 48, 49"
+          },
+          {
+            "text": "If you deploy (rather than provide): assign trained human oversight, monitor operation, keep logs, and inform affected workers where relevant.",
+            "basis": "Article 26"
+          }
+        ],
+        "corpusVersion": "aia-oj-2024-06-13_ingested-2026-06-11",
+        "retrievalMode": "bm25-only",
+        "cost": {
+          "calls": 4,
+          "inputTokens": 14729,
+          "outputTokens": 627,
+          "eur": 0.044368
+        },
+        "hitlMode": "ephemeral-memory",
+        "disclaimer": "Triage, not legal advice. This is an automated first-pass reading of Regulation (EU) 2024/1689 by a language-model pipeline built by a non-lawyer. It exists to route use cases — to tell you which ones deserve qualified legal review — not to replace that review."
+      }
+    }
+  ]
+}

@@ -19,6 +19,32 @@ export interface SseEvent {
   threadId?: string;
 }
 
+/**
+ * Maps one LangGraph state-update object to the SSE events the client consumes.
+ * Single source of truth: `sseResponse` (the live route) and the demo-capture
+ * script (scripts/capture-demo.ts) both go through here, so a recorded demo is
+ * byte-identical to a live stream.
+ */
+export function eventsForUpdate(update: Record<string, unknown>, threadId: string): SseEvent[] {
+  const out: SseEvent[] = [];
+  for (const [node, value] of Object.entries(update)) {
+    if (node === '__interrupt__') {
+      const interrupts = value as { value: unknown }[];
+      out.push({ type: 'awaiting_approval', threadId, data: interrupts[0]?.value });
+      continue;
+    }
+    const v = value as Record<string, unknown> | null;
+    if (v && 'guardFail' in v && v.guardFail) {
+      out.push({ type: 'guard_fail', node, data: v.guardFail });
+    } else if (v && 'report' in v && v.report) {
+      out.push({ type: 'report', node, data: v.report });
+    } else {
+      out.push({ type: 'node', node, data: summarize(node, v) });
+    }
+  }
+  return out;
+}
+
 export function sseResponse(
   threadId: string,
   iterate: () => Promise<AsyncIterable<Record<string, unknown>>>,
@@ -31,25 +57,7 @@ export function sseResponse(
       try {
         send({ type: 'meta', threadId });
         for await (const update of await iterate()) {
-          for (const [node, value] of Object.entries(update)) {
-            if (node === '__interrupt__') {
-              const interrupts = value as { value: unknown }[];
-              send({
-                type: 'awaiting_approval',
-                threadId,
-                data: interrupts[0]?.value,
-              });
-              continue;
-            }
-            const v = value as Record<string, unknown> | null;
-            if (v && 'guardFail' in v && v.guardFail) {
-              send({ type: 'guard_fail', node, data: v.guardFail });
-            } else if (v && 'report' in v && v.report) {
-              send({ type: 'report', node, data: v.report });
-            } else {
-              send({ type: 'node', node, data: summarize(node, v) });
-            }
-          }
+          for (const e of eventsForUpdate(update, threadId)) send(e);
         }
       } catch (err) {
         send({ type: 'error', data: err instanceof Error ? err.message : String(err) });
