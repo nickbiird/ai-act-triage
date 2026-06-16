@@ -68,8 +68,9 @@ const NODE_LABELS: Record<string, string> = {
   plan_queries: 'Planning retrieval',
   retrieve: 'Searching the Act',
   propose: 'Proposing classification',
-  critique: 'Adversarial review',
+  critic: 'Adversarial review',
   gate: 'Human decision recorded',
+  report_node: 'Report generated',
 };
 
 export default function Home() {
